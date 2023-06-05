@@ -46,6 +46,6 @@ There are many other files in the zip, however finding all the goodies in those 
 
 ![ghidraimport](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/ghidraimport.png)
 
-From there you can import the file binaries into your analysis tool of choice and begin your iOS RE adventure (after you have another coffee of course).
+From there you can import the binaries into your analysis tool of choice and begin your iOS RE adventure (after you have another coffee of course).
 
 ![ghidradecompile](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/ghidradecompile.png)
