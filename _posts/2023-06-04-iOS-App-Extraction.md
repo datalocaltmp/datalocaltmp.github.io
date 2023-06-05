@@ -33,7 +33,7 @@ Then we can proceed to use this bundle identifier to extract the application. Us
 
 The image below is example output; the `Safari.ipa` file is a valid .zip file and can be extracted in order to access the binaries for analysis.
 
-!(bundledump)[https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/bundledump.png]
+![bundledump](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/bundledump.png)
 
 ## Analyzing .ipa Binaries
 
