@@ -25,7 +25,7 @@ In order to find the bundle identifier for an application, enter the `frida-ios-
 
 The image below shows example output for this command, note that the bundle identifier is `com.apple.mobilesafari`.
 
-![[bundleids.png]]
+![[https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/bundleids.png]]
 
 Then we can proceed to use this bundle identifier to extract the application. Use the following command to produce an .ipa file for Safari:
 
@@ -33,7 +33,7 @@ Then we can proceed to use this bundle identifier to extract the application. Us
 
 The image below is example output; the `Safari.ipa` file is a valid .zip file and can be extracted in order to access the binaries for analysis.
 
-![[bundledump.png]]
+![[https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/bundledump.png]]
 
 ## Analyzing .ipa Binaries
 
@@ -44,8 +44,8 @@ Once the .ipa file is unzipped, there will be a binary files that has the same n
 
 There are many other files in the zip, however finding all the goodies in those is left as an exercise for the reader.
 
-![[ghidraimport.png]]
+![[https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/ghidraimport.png]]
 
 From there you can import the file binaries into your analysis tool of choice and begin your iOS RE adventure (after you have another coffee of course).
 
-![[ghidradecompile.png]]
+![[https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/ghidradecompile.png]]
