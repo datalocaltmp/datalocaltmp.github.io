@@ -1,16 +1,16 @@
 Decompilers are essential when reverse engineering Android applications and binaries; unfortunately with static analysis it's up to the reverse engineer to determine which of these complex paths to investigate.
 
-This write-up is meant to show how to find narrow reverse engineering efforts to executed paths using Frida, Lighthouse Coverage Generator, Ghidra, and Dragon Dance. At the end of this write-up you should have a solid basis for visualizing code coverage in Ghidra as seen below.
+This write-up is meant to show how to focus reverse engineering efforts to executed paths using Frida, Lighthouse, Ghidra, and Dragon Dance. At the end of this write-up you should have a solid understanding on how to visualize code coverage in Ghidra.
 
 ![example](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/example.webp)
 
 
-We will be looking at the popular application Facebook Messenger in this part; part 2 will cover writing a harness to trigger this functionality and how to generate coverage for native Android binaries (which is not currently supported).
+In this write-up we will be looking at the popular application Facebook Messenger as an example; part 2 of this series will cover writing how to generate coverage for native Android binaries (which is not currently supported).
 
 #### Pre-requisites
 To follow along with this write-up you'll need to install the following tools:
 
-* Ghidra == 9.0.2
+* Ghidra == 9.0.2 found [here](https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_9.0.2_build).
 	* DragonDance currently only supports up to 9.0.2
 * DragonDance Ghidra Extension found [here](https://github.com/0ffffffffh/dragondance).
 * Git clone the Lighthouse Coverage Explorer [here](https://github.com/gaasedelen/lighthouse).
@@ -29,10 +29,11 @@ Let's setup Frida and find an interesting native library within our Application 
 7. From here pick a native library you'd like to reverse engineer, for this example we'll reverse `libmsysinfra.so`
 
 #### Frida Tracing `libmsysinfra.so`
-Now that we have a native library within an Application we'd like to investigate, `libmsysinfra.so` in this case, let's find a function worth reverse engineering.
+Now that we have a native library we'd like to investigate, `libmsysinfra.so` in this case, let's find an exported function worth reverse engineering.
 
 1. While the application is running, execute `frida-trace -U Messenger -i 'libmsysinfra.so!*'`
-	   (Note: `'<nativeLibrary>!<functionName>'` is the format associated with tracing native code with `-i` and this example will trace all exported functions within the native library).
+	
+    (Note: `'<nativeLibrary>!<functionName>'` is the format associated with tracing native code with `-i` and this example will trace all exported functions within the native library).
 2. Use the application until you trigger some functionality that you are interested in; in this instance opening a Messenger Chat has triggered the function `MCQMessengerOrcaAppLoadThreadViewData()` which has subsequently called many many additional functions, quite interesting!
 
 ![interestingFunction](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/interestingFunction.png)
@@ -44,9 +45,11 @@ Now that we have a native library within an Application we'd like to investigate
 
 
 #### Generating Code Coverage for `MCQMessengerOrcaAppLoadThreadViewData()`
-Lets generate a visualization of the basic block code coverage to help guide how we reverse engineer this function.
+Lets generate a visualization of the executed basic blocks to help guide how we focus our reverse engineering efforts.
 1. Navigate to `lighthouse/coverage/frida` directory
-2. Execute `python3 frida-drcov.py -D emulator-5554 Messenger` and note that this will kill the application we will need to narrow our search before generating the coverage. To narrow our results we'll use the `-w ` and `-t` flags described below:
+2. Execute `python3 frida-drcov.py -D emulator-5554 Messenger` (Note: this will crash the application, we will need to narrow our search before generating the coverage)
+
+To narrow our results we'll use the `-w ` and `-t` flags described below:
    
    `usage: frida-drcov.py [-h] [-o OUTFILE] [-w WHITELIST_MODULES] [-t THREAD_ID] [-D DEVICE] target`
 
@@ -54,13 +57,13 @@ Lets generate a visualization of the basic block code coverage to help guide how
    
     `frida-trace -U Messenger -i 'libmsysinfra.so!MCQMessengerOrcaAppLoadThreadViewData'`
 
-4. While the function is being traced, use the application to trigger the function and note the thread ID, in the image below it's `0x2dbe` which corresponds to `11710` in decimal. Using this thread ID and library filter we are able to capture 1118 blocks of coverave which are saved to `frida-cov.log`
+4. While the function is being traced, use the application to trigger the function and note the thread ID, in the image below it's `0x2dbe` which corresponds to `11710` in decimal. Using this thread ID and library filter we are able to capture 1118 blocks of coverage which are saved to `frida-cov.log`
 
 ![coverageGeneration](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/coverageGeneration.png)
 
 
 #### DragonDance Visualization
-Now we have the coverage data for our function of interest let's use Dragon Dance Ghidra extension to visualize the basic blocks actually taken.
+Now we have the coverage data for our function of interest let's use Dragon Dance Ghidra extension to visualize the basic blocks executed.
 1. Install the extension using the instructions [here](https://github.com/0ffffffffh/dragondance#installation).
 2. Once the extension is installed, open the native library to analyze and from `Window>Dragon Dance` add the coverage file generated in the previous section.
 ![importingCoverage](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/importingCoverage.png)
