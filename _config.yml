@@ -1,7 +1,7 @@
 title: /data/local/tmp # name of the site
 author: /data/local/tmp # name of site's author
 email: contact@theappanalyst.com # email of site's author
-url: https://theappanalyst.github.io # root address of the site
+url: https://datalocaltmp.github.io # root address of the site
 description: > # description of the site (multiple lines allowed)
   Random technical write-ups on Android tooling.
 
