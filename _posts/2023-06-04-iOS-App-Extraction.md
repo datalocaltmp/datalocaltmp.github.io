@@ -1,5 +1,7 @@
 There are many reasons you may want to extract iOS applications; one in particular is reviewing security and privacy aspects with an analysis tool such as Ghidra. Unfortunately, unlike .apk files for Android, .ipa files cannot be side-loaded very easily; this has led to a smaller mirroring community.
 
+![usage](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/usage.webp)
+
 With a lack of .ipa mirrors it'll be up to the individual to extract the artifacts for analysis. This write-up is meant to be a quick tutorial on how to do just that and what to expect.
 
 ## Pre-requisites
