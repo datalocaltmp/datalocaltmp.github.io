@@ -4,6 +4,9 @@ For those of us who want to brave the world of native Android executables, be it
 
 ## Part 1 tl;dr
 
+![example](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/sequence.png)
+
+<!---
 ```mermaid
 sequenceDiagram
   participant Native Executable
@@ -19,6 +22,8 @@ sequenceDiagram
     frida-drcov.js->>frida-drcov.js: Detect basic block and write to rawcov.dat
   end
 ```
+-->
+
 
 ## Frida ~~Server~~ Gadget
 
