@@ -84,7 +84,7 @@ sequenceDiagram
 
 ## Et voila! 
 
-Using this new method I was able to generate the coverage map of the executed basic blocks within `libosutils.so`. I would be lying to say I completely figured out what was causing the crash (I suspect permissions  ¯\\\_(ツ)_/¯); this was a toy example that was meant for illustrative purposes.
+Using this new method I was able to generate the coverage map of the executed basic blocks within `libosutils.so`. I would be lying to say I completely figured out what was causing the crash (I suspect permissions  ¯\\\_(ツ)_/¯); this was a toy example that was meant for illustrative purposes #CopOut.
 
 If you have any questions feel free to send them my was @datalocaltmp, thanks for reading!
 
