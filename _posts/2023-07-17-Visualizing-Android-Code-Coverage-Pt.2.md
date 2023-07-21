@@ -82,7 +82,13 @@ sequenceDiagram
 ```
 -->
 
-Once I had 
+## Et voila! 
+
+Using this new method I was able to generate the coverage map of the executed basic blocks within `libosutils.so`. I would be lying to say I completely figured out what was causing the crash (I suspect permissions  ¯\\\_(ツ)_/¯); this was a toy example that was meant for illustrative purposes.
+
+If you have any questions feel free to send them my was @datalocaltmp, thanks for reading!
+
+
 
 ## Notes
 \* Passing arguments to an executable which is being injected by frida-server had posed some issues for myself as it did not expect an app process to receive any arguments.
