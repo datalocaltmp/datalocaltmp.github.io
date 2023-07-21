@@ -1,8 +1,8 @@
-In [part one](https://datalocaltmp.github.io/visualizing-android-code-coverage-pt-1.html) of this series  I described how to vizualize Android application code using Dragon Dance + Frida + Lighthouse + Ghidra. Though there is one big hang-up, what if you **don't have root** or **want to examine a non-app process**. 
+In [part one](https://datalocaltmp.github.io/visualizing-android-code-coverage-pt-1.html) of this series I described how to visualize Android application code using Dragon Dance + Frida + Lighthouse + Ghidra. Though there is one big hang-up, what if you **don't have root** or **want to examine a non-app process**. 
 
 Fear not! For those of us who want to brave the world of non-app processes or are condemned to the lowly shell user, there is another solution explained within.
 
-TL;DR: New tool [here](https://github.com/datalocaltmp/frida-cov) to generate code coverage for Android executables on non-rooted devices.
+TL;DR: New tool [here](https://github.com/datalocaltmp/frida-cov) to generate code coverage for Android executables on non-rooted devices, description below.
 
 ![coverage_path](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/coverage_path.webp)
 
@@ -10,7 +10,7 @@ This write-up will show an example of writing a native harness for the Meta Ques
 
 ## Quest 2 Native Library Example
 
-For those unaware, the Quest 2 VR headset is developed ontop of Android. What's nice about this is that you can enable developer-mode and use all the wonderful tools you're used to as an Android developer/researcher.
+For those unaware, the Quest 2 VR headset is developed on top of Android. What's nice about this is that you can enable developer-mode and use all the wonderful tools you're used to as an Android developer/researcher.
 
 I had done just that and decided to dive into the native libraries in `/system/lib64/`. It didn't take much more than a quick `strings ./* | grep _Z | c++filt -n` to identify `libosutils.so` as a native library worth poking.
 
@@ -46,17 +46,17 @@ And upon running it, sure enough it crashed in the `getProcessName` function, co
 
 ## Coverage Guidance Gadgets
 
-Since I did not have the ability to run frida server as shell user, I got invetive and modified the Lighthouse frida coverage generator to work with the Frida gadget shared library. As per the documentation for Lighthouse's `frida-drcov.py` tool it should "only be used for collecting coverage data on mobile applications" and not appropriate for the native executable we're interested in.
+Since I did not have the ability to run Frida server as shell user, I got inventive and modified the Lighthouse Frida coverage generator to work with the Frida gadget shared library. As per the documentation for Lighthouse's `frida-drcov.py` tool it should "only be used for collecting coverage data on mobile applications" and not appropriate for the native executable we're interested in.
 
-I seperated the Python script from part one into two distinct pieces. The first piece generated raw output from Frida's stalker code tracing engine (more [here](https://frida.re/docs/stalker/)), and the second piece took this raw output and converted it into a Lighthouse compatable log.
+I separated the Python script from part one into two distinct pieces. The first piece generated raw output from Frida's stalker code tracing engine (more [here](https://frida.re/docs/stalker/)), and the second piece took this raw output and converted it into a Lighthouse compatible log.
 
 ### Frida ~~Server~~ Gadget Method
 
 1) Rather than using frida-server, use frida gadget via `LD_PRELOAD=./libgadget.so`
-2) Within `libgadget.config.so` reference the lighthouse modifided javascript `frida-drcov.js`
+2) Within `libgadget.config.so` reference the lighthouse modified javascript `frida-drcov.js`
 3) `frida-drcov.js` stores raw coverage data in `/data/local/tmp/rawcov.dat`
 4) Use modified `frida-drcov.py` to convert raw data to DragonDance coverage map
-5) Import converage map into Ghidra!
+5) Import coverage map into Ghidra!
 
 The code that I produced is available [here](https://github.com/datalocaltmp/frida-cov), as well as `libosutils.so` and a sample coverage file if you'd like to follow along.
 
@@ -87,8 +87,6 @@ sequenceDiagram
 Using this new method I was able to generate the coverage map of the executed basic blocks within `libosutils.so`. I would be lying to say I completely figured out what was causing the crash (I suspect permissions  ¯\\\_(ツ)_/¯); this was a toy example that was meant for illustrative purposes #CopOut.
 
 If you have any questions feel free to send them my was @datalocaltmp, thanks for reading!
-
-
 
 ## Notes
 \* Passing arguments to an executable which is being injected by frida-server had posed some issues for myself as it did not expect an app process to receive any arguments.
