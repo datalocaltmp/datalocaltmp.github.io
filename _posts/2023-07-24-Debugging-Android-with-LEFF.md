@@ -65,11 +65,15 @@ For those that want a one-to-one comparison with Voltron I've included two short
 
 ### LLEF Usage
 
-![llef-use](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/llef-use.webp)
+![llef-use](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/llef-small-use.webp)
+
+Full-resolution video [here](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/llef-use.webp) (18 mb).
 
 ### Voltron Usage
 
-![voltron-use](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/voltron-use.webp)
+![voltron-use](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/voltron-small-use.webp)
+
+Full-resolution video [here](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/voltron-use.webp) (39 mb).
 
 ## Thoughts
 
