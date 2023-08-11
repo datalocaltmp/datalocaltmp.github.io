@@ -59,12 +59,7 @@ video::-webkit-media-controls {
 * Future VR Environments
 
 ---
-<!-- 
-Notes: 
-  * Try and move through this portion faster since it does have some corporate jargon
-  * Though I promise I won't say synergy.
 
--->
 # What is Deep Work?
 
   * Term coined by Cal Newport
@@ -202,14 +197,61 @@ Notes:
 
 ---
 
-# Example: Debugging with LLDB + Voltron 
+![bg right:33% width:60%](../media/android.png)
+
+# Virtual Workspaces in Practice
+
+* A few examples to illustrate situations that benefit from virtual workspaces
+  * Comparing laptop vs virtual workspace
+
+* These examples are documented on my blog:
+  * [LLDB + Voltron](https://datalocaltmp.github.io/debugging-android-with-lldb.html)
+  * [Ghidra + Dragon Dance](https://datalocaltmp.github.io/visualizing-android-code-coverage-pt-1.html)
+
+* Because I like mobile security and the Quest 2 is an Android device...
+  * Let's debug some Quest 2 native libraries
+  * `libosutils.so` -> `getProcessName(int pid)`
+  * C code to build toy program [here](https://datalocaltmp.github.io/visualizing-android-code-coverage-pt-2.html)
 
 ---
+
+# Example: Debugging with LLDB + Voltron 
+
+  * Have a binary but don't know why it's crashing?
+    * Attach LLDB and start your analysis
+
+  * Recently moved to LLDB from GDB due to Android NDK support shift
+    * This is documented in the "[Using Debuggers](https://source.android.com/docs/core/tests/debug/gdb)" Android documentation
+
+  * Previously used GEF with GDB; Voltron gives and equivalent experience in LLDB
+
+---
+
+<!-- 
+Notes: 
+  * At the top is the LLDB interpreter
+  * Below that is the Stack
+  * Below that is the Registers and the Disassembly
+  * Finally we have the back trace
+
+  * It's fairly obvious, but the terminal is kinda at it's max at the moment; it would be hard to visualize much more without additional monitors and taking notes would require switching contexts.
+-->
 
 ![center height:50%](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/voltron-use.webp)
 
 ---
+
+![center](../media/lldb_vr.webp)
+
+---
+
 # Example: SRE with Ghidra + DragonDance
+
+  * Have a LLDB session but don't know where to place break points or how to approach the analysis.
+
+  * Open your decompiler of choice and begin SRE, or ...
+
+  * Use a tool like Lighthouse to generate coverage maps (the executed code within the binary) and use Dragon Dance to visualize execution in Ghidra's function graph!
 
 ---
 
@@ -217,21 +259,39 @@ Notes:
 
 ---
 
-<video controls>
-  <source src="../media/Final.mp4" type="video/mp4">
-  Browser doesn't support video tags.
-</video>
+![center](../media/dd_vr.webp)
 
+---
+
+![bg right:33% width:50%](../media/unity_logo.png)
+
+# Future Virtual Workspaces
+
+* Unity gives you the tools to build your own workspaces!
+
+* Custom built to suit your needs and doesn't need to just be more monitors
+
+* Large learning curve and I must admit I haven't gotten to this point.
+
+---
+
+![bg center width:80%](../media/unity_dev.png)
+
+---
+
+![center](../media/final.webp)
 
 ---
 
 # Parting Thoughts
 
-* I'm not trying to force you into a Virtual Workspace
-  * You're just the folks that are already here so...
+* When work-from-home became the standard, it was nice to be able to work outside inside.
 
-* It's not all sunshine
-  * Eye-fatigue, "VR legs", Computation Intensive
+* This isn't for everyone of course
+  * Eye-fatigue, "VR legs", virtual monitors become computationally intensive
+  * You're just the folks that are already in VR so...
+
+* Remember that Deep work doesn't need to be long, it just needs to be meaningful
 
 ---
 
@@ -239,7 +299,7 @@ Notes:
 
 ---
 
-# Bonus: Tax write-off your Quest
+# Thanks!
 
-![center width:600](./CoverageNotes/wfh.webp)
+![center width:800](../media/wave.webp)
 
