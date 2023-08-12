@@ -394,25 +394,69 @@ Notes:
   
   * And if you're really wild you can even work in your own home away from home.
   * cue bizarre cat photo again.
+  * And so if you want to try out a virtual workspace here's what I have for my Personal set-up
+
 -->
 
 ![bg center](../media/office_ex.jpg)
 
 --- 
 
+<!-- 
+Notes: 
+  
+  * My personal setup is really everything you see in the photo there plus a set of noise cancelling headphones.
+
+  * MacOS is nice as it supports Virtual monitors out of the box.
+
+  * I have also ran Linux but it does require a lot of configuration to use virtual monitors.
+
+  * If you're using Windows, it has an equivalent experience as MacOS.
+
+  * For free software I use includes a Quest 2 App known as Immersed, which is a very fitting name, as well as adb (the Android debug bridge for those unfamiliar) which provides a lot of extra features as the Quest 2 is an Android device.
+
+  * Specifically some of the features you get with adb are the tethering to reduce latency. For myself I get a shell in a modern Android environment, and you also get speedy file transfers between the headset and computer.
+
+  * And now I use Frame VR for presenting!
+
+  * Alright, I've now gone through Deep work, Virtual Workspaces, and how I set mine up; lets dive into some of these environments in practice.
+  
+-->
+
+
 ![bg right:44%](../media/setup.jpeg)
 
 # Personal Setup
 
-  * Quest 2 + macOS + headphones
-    * Ubuntu/Linux supported but lacking in certain features
-    * Windows has a similar support level as macOS
+  * Quest 2 + Macbook + headphones
+    * Ubuntu/Linux supported but lacking in certain features.
+      * It does seem possible to use `xrandr` to fake out virtual monitors.
+    * Windows has a similar support level as macOS.
 
-  * Immersed + adb 
+  * Immersed + adb (Android Debug Bridge)
     * The Quest 2 is an Android device adb provides enhanced features
+      * Tethering for reduced latency, a modern Android environment, speedy file transfers
     * And now Frame VR for presenting!
 
 ---
+
+<!-- 
+Notes: 
+  
+  * I've compiled two examples to illustrate real situations I've found myself in that benefitted from my virtual workspace. In these examples I was traveling and only had my laptop and headset and so I'm really comparing working from only a laptop with my vr workspace.
+
+  * As I said before the examples I'm going to work through are specifically debugging with LLDB and Voltron, as well as reverse engineering with Ghidra and the Ghidra extension Dragon Dance.
+
+  * Both of these examples are documented on my blog and you're welcome to learn more about it there!
+
+  * Finally, since the Quest 2 is a mobile device effectively, I'll be using Quest 2 native libraries as a target in both examples.
+
+  * Specifically we'll be looking at the Meta developed libosutils and the benign getProcessName function that takes a pid and returns a string.
+
+  * If you want to attempt this later on your own time there is some C code on my blog to compile a binary that calls this native libraries function.
+
+  * So lets start with the Debugging example.
+-->
 
 ![bg right:33% width:60%](../media/android.png)
 
@@ -432,35 +476,86 @@ Notes:
 
 ---
 
+<!-- 
+Notes: 
+  
+  * So for those of you that are familiar with GDB. GEF is the GDB Enhanced Features extension. It's comparable to Voltron which enhances the features of LLDB.
+
+  * FoundryZero has just create a true recreation of GEF for LLDB and it's appropriately named LLEF and I document using on my blog here if you want to learn more about that.
+
+  * And the reason I've moved to LLDB is due to the Android NDK shifting support from GDB to LLDB; GDB support is being deprecated in the latest Android NDKS and I figured it was time to learn a new tool.
+
+  * So now you know what and why of LLDB; lets quickly say when to use it; And that's when we experience a binary that is crashing and perhaps we have a stacktrace but we don't really know more than that.
+
+  * The solution to this problem is generally attaching a debugger and stepping through it's execution.
+
+  * And in generally that looks like this on a laptop.
+
+-->
+
 # Example: Debugging with LLDB + Voltron 
 
-  * Have a binary but don't know why it's crashing?
-    * Attach LLDB and start your analysis
+  * GEF is to GDB as Voltron is to LLDB
+    * FoundryZero has just created LLEF and my comparison is documented [here](https://datalocaltmp.github.io/debugging-android-with-leff.html)
 
   * Recently moved to LLDB from GDB due to Android NDK support shift
     * This is documented in the "[Using Debuggers](https://source.android.com/docs/core/tests/debug/gdb)" Android documentation
 
-  * Previously used GEF with GDB; Voltron gives and equivalent experience in LLDB
+  * Problem: We have a binary but don't know why it's crashing.
+    * Solution: Attach LLDB and start your analysis
 
 ---
 
 <!-- 
 Notes: 
-  * At the top is the LLDB interpreter
-  * Below that is the Stack
-  * Below that is the Registers and the Disassembly
-  * Finally we have the back trace
+  * So on our single screen we have a ton of condensed information
+    * At the top is the LLDB interpreter
+    * Below that is the Stack
+    * Below that is the Registers and the Disassembly
+    * Finally we have the back trace
 
-  * It's fairly obvious, but the terminal is kinda at it's max at the moment; it would be hard to visualize much more without additional monitors and taking notes would require switching contexts.
+  * It's fairly obvious, but the terminal at this point is at it's max for conveying information; it would be hard to visualize more information without additional windows that you'd have to switch between.
+
+  * And this is only showing what it's like to visualize the information let alone taking notes on what you're finding.
+
+  * So what does this look like in a virtual workspace...
 -->
 
 ![center height:50%](https://raw.githubusercontent.com/datalocaltmp/datalocaltmp.github.io/main/_posts/voltron-use.webp)
 
 ---
 
+<!-- 
+Notes: 
+  * In a virtual workspace we get to configure virtual monitors any way we'd like.
+
+  * This comes at the cost of course of using a vr headset, but the value it provides I believe is worth it.
+
+  * On the far right monitor we have:
+    * the stack visible on top, followed by two hexdumps of interesting memory locations
+    
+  * On the middle monitor we have:
+    * the same LLDB interpreter
+    * the registers and disassembled binary
+
+  * And finally on the far left monitor we have our notes capturing any findings
+
+  * Personally, I find that this experience really prevents having to change windows which can sometimes be equivalent to context switching itself.
+
+  * So this was an example of debugging; lets look at Reverse Engineering.
+-->
+
+
 ![center](../media/lldb_vr.webp)
 
 ---
+
+
+<!-- 
+Notes: 
+  * 
+-->
+
 
 # Example: SRE with Ghidra + DragonDance
 
