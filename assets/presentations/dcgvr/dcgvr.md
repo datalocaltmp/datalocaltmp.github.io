@@ -8,6 +8,20 @@ class:
 markdown.marp.enableHtml : true
 
 ---
+
+<!-- 
+Notes: 
+  * Hi everyone! 
+  
+  * Name is datalocaltmp or datalocal"temp".
+  
+  * Talking about Virtual Workspaces and how they've helped my Security Research.
+  
+  * Thanks to DCGVR for the space and all the hard work they've done gathering everyone!
+  
+  * Also after this presentation I'll be tweeting out a link to my slide-deck so if you're interested in any of the links here; you can grab them there.
+-->
+
 <style>
 section { 
     font-size: 20px; 
@@ -28,18 +42,53 @@ video::-webkit-media-controls {
 
 ---
 <!-- footer: 'datalocaltmp | https://datalocaltmp.github.io/ | 2023' -->
+
+<!-- 
+Notes: 
+  * Independent security researcher focused on mobile
+  
+  * Previously dedicated to researching privacy within mobile apps and featured in TechCrunch as "theappanalyst"
+  
+  * Some notable bounty programs I've worked with include Bird Scooters, Biden Campaign App, Ring Cameras, Match.com.
+  
+  * Nowadays I focus on mobile platform security and in particular reverse engineering the native layer
+  
+  * Virtual Reality Enthusiast
+-->
+
 # $whoami
-## Independent Security Researcher
-- Previously focussed on privacy issues within mobile applications.
-  - Featured in Tech Crunch for shining a light on apps screenshot'ing credit card information & passwords.
+## Security Researcher
+* Previously focussed on privacy issues within mobile applications.
+  * Featured in TechCrunch for shining a light on apps screenshot'ing credit card information & passwords.
 
-- Claimed bounties with: Bird Scooters, the Biden Campaign App, Ring Cameras, Match.com, etc.
+* Claimed bounties with: Bird Scooters, the Biden Campaign App, Ring Cameras, Match.com, etc.
 
-- Nowadays focus on mobile platform security with a recent eye towards native reverse engineering.
+* Nowadays focus on mobile platform security with a recent eye towards native reverse engineering.
 
-- A virtual reality enthusiast!
+* A virtual reality enthusiast!
 
 ---
+
+<!-- 
+Notes: 
+  * In today's talk I'll be describing my experience in Virtual Workstations
+    * You can see an example of that on the right there...
+  
+  * First I'll attempt to convince you that Security Research is something known as deep work
+    * Apologies if this portion is filled with some corporate speak but I think it's worth saying
+    * Trust me that we'll get away from this and into the virtual setup and technical portion.
+  
+  * Then I'll describe why I think virtual workspaces really lend themselves to Security Research
+  
+  * From there I'll get into my personal set-up and some pro-tips
+  
+  * I'll showcase a couple of technical examples of virtual workspaces
+    * Debugging using LLDB and Voltron (very similar to GDB and GEF if you're familiar)
+    * SRE with Ghidra and a visualization extension named Dragon Dance
+      * This example particularly benefits given it's visual nature
+  
+  * Finally, I'll talk about what I see as the future of the space and things I'm excited about.
+-->
 
 ![bg right](../media/FutureIsNow.gif)
 
@@ -60,34 +109,44 @@ video::-webkit-media-controls {
 
 ---
 
-# What is Deep Work?
+<!-- 
+Notes: 
+  * We're going to kick off on describing Deep Work, and how it relates to Security Research.
 
-  * Term coined by Cal Newport
+  * It's a concept introduced by Cal Newport in his blog at the link there, and defines it as the "Cognitively demanding activities that leverage our training to generate rare and valuable results"
+
+  * But, in another sense, it's the work we do that leverages our haxor skillz to find bugs.
+
+  * This term, while sounding a bit like corporate jargon, will likely resonate with many of you; it really relates to the state I find myself in when I produced meaningful security research.
+
+  * And so I imagine any work that you do to find CVE's or produce PoC's is likely deep work as well!
+-->
+
+# Security Research - Deep Work?
+
+  * "Deep Work" coined by Cal Newport with a fantastic introduction in his blog [here](https://calnewport.com/knowledge-workers-are-bad-at-working-and-heres-what-to-do-about-it/)
   
-  * "Cognitively demanding activities that leverage our training to generate rare and valuable results"
-    * Difficult work that pushes ourselves and leads to improving our abilities
+    * "Cognitively demanding activities that leverage our training to generate rare and valuable results" - Cal Newport
 
-  * Fantastic introduction in his blog [here](https://calnewport.com/knowledge-workers-are-bad-at-working-and-heres-what-to-do-about-it/)
+    * "Work that leverages our skillz to find bugs" - datalocaltmp
 
----
-
-# Inconvenient Observations
-
-![bg right:33%](../media/organized.jpg)
-
-  * Context switching and distractions destroy focus.
-    * Tracking use of variables across decompiled functions.
-    * Comprehending complex security write-ups.
-    * Reading and understanding source-code.
-
-  * Often caught in the shallow end while working on a deep problem.
-    * "Oh I should plan a time for looking at that".
-    * "Gotta spend time take some VR recordings for my Twitter".
-    * It's easy work and it feels productive...
-
-  * It wasn't often that I immersed myself in the deep end, in deep work.
+  * The work that you do that produces a CVE or PoC is likely deep work.
 
 ---
+
+<!-- 
+Notes: 
+  * Preparation is key as you're aiming to dedicate 1-3 hours of focused work time.
+
+  * Ensure you have a clear goal in mind for this time on a topic that you think really benefits from deep work (perhaps not sending emails or updating socials).
+
+  * Chunk that goal up and aim to tackle the first logical chunk, then try and stretch into starting the next in that session.
+
+  * Track how long you are in this deep work state, it'll help you recognize the work you're doing and improve.
+
+  * You only need to be in this state for a short period of time, for many that lends itself to using a virtual workspace.
+
+-->
 
 # Deep Work 101
 
@@ -98,18 +157,38 @@ video::-webkit-media-controls {
   * Set a dedicated goal for yourself.
 
 * Stretch
-  * Aim to tackle the next logical chunk of your goal, attempt to push beyond that.
+  * Aim to tackle the next logical chunk work towards your goal;
+  * attempt to push beyond that chunk.
 
-* Obsess
+* Track
   * Complete 1-3 hours of deep work, track your time, rinse and repeat.
+  * The short nature of deep work does lend itself to VR.
 
 ---
+
+<!-- 
+Notes: 
+  * Here is an example of what that would look like in practice for myself.
+
+  * I'd clarify my goal to myself; perhaps understanding a vulnerability in a structure that is passed to a function
+
+  * I'd define the chunks of work that I'd need to complete, perhaps starting with defining the members of the struct within a Ghidra Data Type.
+
+  * I'd then prepare workstation and open all the software I'd need for that; perhaps GDB and Ghidra.
+
+  * And then I'd try and stretch my deep work session into including working on investigating all access to a member of that struct.
+
+  * And that's how it might look for me to get into my deep work state, however as I'm sure you'll resonate with;
+
+-->
+
+![bg right:33% width:350px](../media/struct.png)
 
 # Deep Work: An Example
 
   * Clarify
     * "I'd like to understand a vulnerability in a structure that is passed to a function"
-    * Concrete goal: Define a Ghidra Data Type for that struct
+    * Concrete chunk: Define a Ghidra Data Type for that struct
  
   * Preperation
     * Prepare my workstation/environment, open Ghidra, set-up GDB.
@@ -120,11 +199,75 @@ video::-webkit-media-controls {
 
 ---
 
+<!-- 
+Notes: 
+  * Distractions kill deep work.
+
+  * When a distraction appears and you have to context switch. this can kill your deep work state.
+
+  * For example in a lot of my work, which could involve tracking variables across functions when reverse engineering, or comprehending complex security write-ups; I find that distractions similar to destroying the wall of yarn that ties ideas.
+
+  * So in a distraction rich environment I find myself often caught in the shallow end attempt to work on a deep problem.
+
+  * This involves doing things that don't really require any skill like updating scheduling future work or updating my socials. The feel productive because they do have value, but they're not enhanced by my skills.
+
+  * I found it wasn't often that I immersed myself in the deep end of deep work.
+
+  * And of course if I have an audience I have to include some photos of my distractions
+
+-->
+
+# Distractions kill Deep Work
+
+![bg right:33%](../media/organized.jpg)
+
+  * Context switching destroys focus.
+    * Tracking use of variables across decompiled functions.
+    * Comprehending complex security write-ups.
+    * Analogous to a wall of yarn that is destroyed every context switch.
+
+  * Often caught in the shallow end while working on a deep problem.
+    * "Oh I should plan a time for looking at that".
+    * "Gotta spend time take producing content for my Twitter".
+    * It's easy work and it feels productive...
+
+  * It wasn't often that I immersed myself in the deep end, in deep work.
+
+---
+
+<!-- 
+Notes: 
+  
+  * There's my workstation with my bizarre cat photo and 1980 wood paneled walls.
+
+  * And there are two of my key distractors (there was no way I'd put a picture of my partner there...)
+
+  * So how do I avoid distractions and embrace deep work?
+
+-->
+
 ![bg](../media/distraction.jpeg)
 ![bg](../media/distraction3.jpeg)
 ![bg](../media/distraction2.jpeg)
 
 --- 
+
+<!-- 
+Notes: 
+  
+  * I embrace virtual workspaces that I believe are really suitable for deep work.
+
+  * I think there are a lot of reasons to embrace these workstations because:
+
+  * They're highly configurable; really providing a workspace that can change to match the task at hand.
+
+  * They're extremely portable; only requiring a vr headset in addition to a laptop to provide a consistent and familiar environment.
+
+  * They're Immersive; it's quite easy to completely disconnect yourself from the outside world
+
+  * I'll quickly expand out each of those points;
+
+-->
 
 # Virtual Workspaces - Deep Work Environments
 
@@ -135,17 +278,49 @@ video::-webkit-media-controls {
   * **Immersive** - Completely disconnects you from the distractions of the Non-Virtual World
 
 --- 
-![bg right:44% width:500px](../media/deep_tent.png)
+
+<!-- 
+Notes: 
+  
+  * For configuration; having a space that is dedicated to your deep work, isn't something new. This person here has even gone so far as to use a dedicated tent to disconnect themselves while they're in this working state. 
+  
+  * Here are some of the key points that I think will resonate with you all:
+
+  * Virtual monitors are available to provide you with more working space than a single screen; they can be configured to be any size.
+
+  * There are mature tools like Unity to create your own virtual environments and security research tools.
+
+  * Though I don't think anyone has spent a serious amount of time in making interactive VR tools and if you do please @ me on twitter!
+
+-->
+
+![bg right:33% width:330px](../media/deep_tent.png)
 
 # Virtual Workspaces - Configuration
 
   * Virtual monitors in any configuration
 
-  * Mature tools to create your own virtual environments and tools
+  * Mature tools like Unity to modify or create your own virtual environments and tools
   
-  * A world of 3d interactive visualization tools that really hasn't been explored
+  * A world of interactive VR security research tools that really hasn't been explored
 
 --- 
+
+<!-- 
+Notes: 
+  
+  * When comparing a virtual workstation to something in your home; it's quite a bit more portable.
+
+  * As I said you really only need a vr headset in addition to your laptop to gain the benefits.
+
+  * Hand-tracking has gotten to the point where you don't really need any additional controllers. It comes with the added benefit of looking like Tom Cruise from minority report.
+
+  * Also there is something to be said for providing a consistent and familiar environment as it's stored on the headset itself.
+
+  * Although you'll still need some method of associating the headset with the computer, which can be either over the LAN or tethered
+    * I personally pick tethered as it provides an extremely low-latency connection.
+
+-->
 
 # Virtual Workspaces - Portability
 
@@ -157,6 +332,21 @@ video::-webkit-media-controls {
 
 --- 
 
+<!-- 
+Notes: 
+  
+  * And finally Immersion;
+
+  * I can't stress enough how a pair of noise cancelling headphones and a vr headset can completely disconnect you from a distracting environment.
+
+  * A pro-tip is to match the soundscape to your environment; it can really enhance your immersion when you're senses are inline with each other. (I should invest in some smellscape candles...)
+
+  * Finally, if you do need to be reachable while deep working it's best to setup a messaging application on your computer. It can be fairly frightening if someone physically interacts with you while you're in this state of immersion!
+
+  * Now I want to share some of my environments, specifically the environments I capture on my phone when I'm on vacation. I think it's a nice way of collecting space and capturing environments you find relaxing.
+
+-->
+
 # Virtual Workspaces - Immersion
 
   * Noise cancelling headphones and the headset provide a completely disconnected environment free of distraction.
@@ -167,17 +357,44 @@ video::-webkit-media-controls {
 
 --- 
 
+<!-- 
+Notes: 
+  
+  * Here for example is the landscape of Corsica as my vr environment
+
+-->
+
 ![bg center](../media/corsica.jpg)
 
 --- 
+
+<!-- 
+Notes: 
+  
+  * Here is me working in the streets of Korea
+
+-->
 
 ![bg center](../media/korea1.jpg)
 
 --- 
 
+<!-- 
+Notes: 
+  
+  * And at it's temples
+
+-->
 ![bg center](../media/korea2.jpg)
 
 --- 
+
+<!-- 
+Notes: 
+  
+  * And if you're really wild you can even work in your own home away from home.
+  * cue bizarre cat photo again.
+-->
 
 ![bg center](../media/office_ex.jpg)
 
