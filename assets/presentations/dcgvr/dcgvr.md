@@ -553,7 +553,15 @@ Notes:
 
 <!-- 
 Notes: 
-  * 
+
+  * So I must admit my intuition on why things crash could be better and I previously would often find myself setting a lot of haphazard breakpoints trying to understand a binaries execution.
+
+  * Often this meant I would open my decompiler of choice, which is Ghidra, and begin reversing in order to guide my breakpoint placement. I'm here to tell you there is a better way.
+
+  * And that better way is to use Frida and Lighthouse to generate code coverage maps and then use those to visualize execution.
+
+  * This will help guide you on what portions of code are actually executed and can help focus your reverse engineering.
+
 -->
 
 
@@ -563,17 +571,67 @@ Notes:
 
   * Open your decompiler of choice and begin SRE, or ...
 
-  * Use a tool like Lighthouse to generate coverage maps (the executed code within the binary) and use Dragon Dance to visualize execution in Ghidra's function graph!
+  * Using Frida with Lighthouse we can generate code coverage maps (the executed code within the binary)
+  
+  * Load these coverage maps into the DragonDance Ghidra extension to visualize execution.
 
 ---
+
+<!-- 
+Notes: 
+
+  * So on a laptop that sort of looks like this; and to say it's disappointing is an understatement.
+
+  * We have the function graph on the righthand side that is highlighting the basic blocks of code that execute. In the middle we have our listing pane that shows the disassembled binary and highlights the arm instructions that ran.
+
+  * Note that we're not getting, specifically:
+    * We can hardly see the decompiled output
+    * We can't to see our symbol table
+    * And we also can't see our Ghidra Data Types.
+
+  * Now what does this look like in a virtual workspace.
+
+-->
 
 ![center](../media/example.webp)
 
 ---
 
+<!-- 
+Notes: 
+
+  * Aside from being at a fantastic Korean palace, we get a lot more information while conducting reverse engineering.
+
+  * We are able to see the entire function graph, rather than a small snippet.
+
+  * We have a large decompiled view with our symbol table and data types.
+
+  * and last but certainly not least we have our note taking app of choice available to document any findings.
+
+  * So this is what's possible today using free software; lets take a quick moment to talk about what I'm excited about for future workspaces.
+
+-->
+
 ![center](../media/dd_vr.webp)
 
 ---
+
+<!-- 
+Notes: 
+
+  * So of course there are new headsets with better resolution, eye tracking, and hand tracking; I'm more interested in the software side of things.
+
+  * As I said before, Unity provides an environment for building your own workspaces and tools from scratch.
+
+    * I'm excited to see what developers create in the future to support
+
+  * Right now a lot of what I've shown is really about visualizing information on more monitors; but I think there is a lot of space for custom VR tools for security research.
+
+  * Though I don't want to pretend that there isn't a large learning curve for Unity if you are interested in taking a stab at developing tools.
+
+  * I personally took a stab at developing my own work environment in Unity and ....
+
+-->
 
 ![bg right:33% width:50%](../media/unity_logo.png)
 
@@ -587,13 +645,49 @@ Notes:
 
 ---
 
+<!-- 
+Notes: 
+
+  * That experience looked something like this with a lot of importing of other free assets and learning VR development.
+
+  * And that development resulted in something like this...
+
+-->
+
 ![bg center width:80%](../media/unity_dev.png)
 
 ---
 
+<!-- 
+Notes: 
+
+  * A virtual workstation that has all the information I need at hand;
+
+  * The ability to browse and a familiar strange cat photo hung above my desk.
+
+  * And with that...
+
+-->
+
 ![center](../media/final.webp)
 
 ---
+
+
+<!-- 
+Notes: 
+
+  * I'll leave you with my parting thoughts.
+
+  * I found VR workspaces to be a nice escape when work-from-home became the norm; it was a nice way of getting outside while being inside.
+
+  * And of course this definitely isn't for everyone; it does take a while to get used and I would recommend first trying some games in VR to hone your "legs" and know how long you can be in the space before your eyes feel fatigued.
+
+  * Also the virtual monitors can become computationally intensive so keep that in mind (you can really only have as many virtual monitors as your computer can handle)
+  
+  * And remember that your time in VR performing deep work doesn't need to be long; it just needs to be meaningful.
+
+-->
 
 # Parting Thoughts
 
@@ -603,7 +697,7 @@ Notes:
   * Eye-fatigue, "VR legs", virtual monitors become computationally intensive
   * You're just the folks that are already in VR so...
 
-* Remember that Deep work doesn't need to be long, it just needs to be meaningful
+* Remember that it doesn't need to be long, it just needs to be meaningful.
 
 ---
 
