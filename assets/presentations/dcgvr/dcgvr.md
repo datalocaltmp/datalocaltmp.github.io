@@ -90,7 +90,7 @@ Notes:
   * Finally, I'll talk about what I see as the future of the space and things I'm excited about.
 -->
 
-![bg right](../media/FutureIsNow.gif)
+![bg right](./media/FutureIsNow.gif)
 
 # Content
 
@@ -182,7 +182,7 @@ Notes:
 
 -->
 
-![bg right:33% width:350px](../media/struct.png)
+![bg right:33% width:350px](./media/struct.png)
 
 # Deep Work: An Example
 
@@ -219,7 +219,7 @@ Notes:
 
 # Distractions kill Deep Work
 
-![bg right:33%](../media/organized.jpg)
+![bg right:33%](./media/organized.jpg)
 
   * Context switching destroys focus.
     * Tracking use of variables across decompiled functions.
@@ -246,9 +246,9 @@ Notes:
 
 -->
 
-![bg](../media/distraction.jpeg)
-![bg](../media/distraction3.jpeg)
-![bg](../media/distraction2.jpeg)
+![bg](./media/distraction.jpeg)
+![bg](./media/distraction3.jpeg)
+![bg](./media/distraction2.jpeg)
 
 --- 
 
@@ -294,7 +294,7 @@ Notes:
 
 -->
 
-![bg right:33% width:330px](../media/deep_tent.png)
+![bg right:33% width:330px](./media/deep_tent.png)
 
 # Virtual Workspaces - Configuration
 
@@ -364,7 +364,7 @@ Notes:
 
 -->
 
-![bg center](../media/corsica.jpg)
+![bg center](./media/corsica.jpg)
 
 --- 
 
@@ -375,7 +375,7 @@ Notes:
 
 -->
 
-![bg center](../media/korea1.jpg)
+![bg center](./media/korea1.jpg)
 
 --- 
 
@@ -385,7 +385,7 @@ Notes:
   * And at it's temples
 
 -->
-![bg center](../media/korea2.jpg)
+![bg center](./media/korea2.jpg)
 
 --- 
 
@@ -398,7 +398,7 @@ Notes:
 
 -->
 
-![bg center](../media/office_ex.jpg)
+![bg center](./media/office_ex.jpg)
 
 --- 
 
@@ -424,7 +424,7 @@ Notes:
 -->
 
 
-![bg right:44%](../media/setup.jpeg)
+![bg right:44%](./media/setup.jpeg)
 
 # Personal Setup
 
@@ -458,7 +458,7 @@ Notes:
   * So lets start with the Debugging example.
 -->
 
-![bg right:33% width:60%](../media/android.png)
+![bg right:33% width:60%](./media/android.png)
 
 # Virtual Workspaces in Practice
 
@@ -546,7 +546,7 @@ Notes:
 -->
 
 
-![center](../media/lldb_vr.webp)
+![center](./media/lldb_vr.webp)
 
 ---
 
@@ -593,7 +593,7 @@ Notes:
 
 -->
 
-![center](../media/example.webp)
+![center](./media/example.webp)
 
 ---
 
@@ -612,7 +612,7 @@ Notes:
 
 -->
 
-![center](../media/dd_vr.webp)
+![center](./media/dd_vr.webp)
 
 ---
 
@@ -633,7 +633,7 @@ Notes:
 
 -->
 
-![bg right:33% width:50%](../media/unity_logo.png)
+![bg right:33% width:50%](./media/unity_logo.png)
 
 # Future Virtual Workspaces
 
@@ -654,7 +654,7 @@ Notes:
 
 -->
 
-![bg center width:80%](../media/unity_dev.png)
+![bg center width:80%](./media/unity_dev.png)
 
 ---
 
@@ -669,7 +669,7 @@ Notes:
 
 -->
 
-![center](../media/final.webp)
+![center](./media/final.webp)
 
 ---
 
@@ -707,5 +707,5 @@ Notes:
 
 # Thanks!
 
-![center width:800](../media/wave.webp)
+![center width:800](./media/wave.webp)
 
